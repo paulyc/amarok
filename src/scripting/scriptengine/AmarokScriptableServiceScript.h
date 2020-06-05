@@ -30,7 +30,7 @@ namespace AmarokScript
 {
     // SCRIPTDOX: ScriptableServiceScript
     /**
-     * Usage: First create the sciprtable service using a call to
+     * Usage: First create the scriptable service using a call to
      * ScriptableServiceScript( string name, int levels, string shortDescription,  string rootHtml, bool showSearchBar )
      */
     class ScriptableServiceScript : public QObject
@@ -55,11 +55,13 @@ namespace AmarokScript
             Q_INVOKABLE void setEmblem( const QPixmap &icon );
             Q_INVOKABLE void setScalableEmblem( const QString &emblemPath );
 
+            Q_INVOKABLE QObject *ScriptableServiceScript_prototype_ctor( QString serviceName, int levels, QString shortDescription, QString rootHtml, bool showSearchBar );
+
+
         private:
             QJSEngine* m_scriptEngine;
             int m_currentId;
             QString m_serviceName;
-            Q_INVOKABLE QJSValue ScriptableServiceScript_prototype_ctor( const QJSValueList argument );
             static QJSValue ScriptableServiceScript_prototype_populate( QJSEngine *engine );
 
         Q_SIGNALS:
