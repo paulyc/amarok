@@ -44,7 +44,7 @@ ScriptableServiceScript::ScriptableServiceScript( QJSEngine* engine )
     );
 }
 
-QJSValue
+QObject*
 ScriptableServiceScript::ScriptableServiceScript_prototype_ctor( QString serviceName, int levels, QString shortDescription, QString rootHtml, bool showSearchBar )
 {
     DEBUG_BLOCK
