@@ -57,6 +57,7 @@ namespace AmarokScript
 
             Q_INVOKABLE QObject *ScriptableServiceScript_prototype_ctor( QString serviceName, int levels, QString shortDescription, QString rootHtml, bool showSearchBar );
 
+
         private:
             QJSEngine* m_scriptEngine;
             int m_currentId;
