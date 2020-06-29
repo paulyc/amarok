@@ -367,24 +367,8 @@ ScriptManager::loadScript( const QString& path )
     }
     else
     {
-        // Try to locate legacy .spec files and convert
-        const QString specPath = QString( "%1/script.spec" ).arg( info.path() );
-        const QString desktopPath = QString( "%1/script.desktop" ).arg( info.path() );
-
-        // First rename it to .desktop, or KPluginInfo won't read it
-        if( QFile::exists( specPath ) &&  !QFile::exists( desktopPath )) {
-            QFile::rename( specPath, desktopPath );
-        }
-
-        if ( QFile::exists( desktopPath ) ) {
-            QJsonDocument jsonDocument( KPluginMetaData::fromDesktopFile( desktopPath ).rawData() );
-            QFile newJsonFile( jsonPath );
-            newJsonFile.open( QFile::WriteOnly);
-            newJsonFile.write( jsonDocument.toJson() );
-        } else {
-            error() << "script.json for "<< path << " is missing!";
-            return false;
-        }
+        error() << "script.json for "<< path << " is missing!";
+        return false;
     }
 
     if( !pluginMetadata.isValid() )
